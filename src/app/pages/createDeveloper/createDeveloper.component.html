@@ -1,0 +1,62 @@
+<mat-card>
+    <mat-card-content class="align-items-center">
+
+        <div style=" padding-left:10%">
+            <form class="example-form">
+                <mat-card-title>Nuevo Desarrollador</mat-card-title>
+                <mat-card-subtitle>Datos del nuevo usuario</mat-card-subtitle>
+                <div class="">
+                    <mat-form-field style="width: 47%;" class="row align-self-start">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput #input maxlength="10" placeholder="Nombre">
+                        <!--<mat-hint >{{input.value.length}}/10</mat-hint>-->
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 47%; padding-left: 4%;" class="row align-self-start">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput #input maxlength="10" placeholder="Apellidos">
+                        <!-- <mat-hint >{{input.value.length}}/10</mat-hint>-->
+                    </mat-form-field>
+                    <!--<mat-form-field  style="width: 47%; padding-left: 4%;" class="row align-self-end">
+                        <mat-label>Apellidos</mat-label>
+                        <mat-select>
+                            <mat-option value="option">Option</mat-option>
+                        </mat-select>
+                        <mat-hint >Here's the dropdown arrow ^</mat-hint>
+                    </mat-form-field>-->
+                </div>
+                <div>
+                    <mat-form-field style="width: 47%; " class="row align-self-start">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input matInput [matDatepicker]="picker" [value]="date.value">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field style="width: 47%; padding-left: 4%;" class="row align-self-end">
+                        <mat-label>Sueldo/hora</mat-label>
+                        <input matInput type="number" placeholder="sueldo/hora" pattern="[0-9]{10}">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field  style="width: 47%; " class="row align-self-start"> 
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput placeholder="pat@example.com"[formControl]="email"  required>
+                        <mat-error *ngif="email.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field style="width: 47%; padding-left: 4%;"  class="row align-self-end">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+                </div>
+                <div class="button-row d-flex align-items-center"
+                    style=" display: flex; align-items: center;  justify-content: center;">
+                    <button mat-raised-button color="accent" class="align-self-end">Guardar Usuario</button>
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-card-content  direction="row" justify="flex-start" alignItems="flex-start">
+        <div direction="row"  class="row">
+      <mat-card class="col-4" *ngFor="let card of obs | async">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{card.title}}</mat-card-title>
+              <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{card.text}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </mat-card-content>
+</mat-card>
