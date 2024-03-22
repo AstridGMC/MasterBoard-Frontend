@@ -9,58 +9,69 @@ import {NgFor, NgForOf} from "@angular/common";
 import { CommonModule } from '@angular/common';
 export interface Card {
   title: string;
+  progreso: number;
   subtitle: string;
   text: string;
 }
 
 const DATA: Card[] = [
   {
-    title: 'Shiba Inu 1',
-    subtitle: 'Dog Breed',
+    title: 'Proyecto1',
+    progreso:80,
+    subtitle: 'Marcos Lopez',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
-    title: 'Shiba Inu 2',
-    subtitle: 'Dog Breed',
+    title: 'Proyecto 3',
+    progreso:20,
+    subtitle: 'Juana Martinez',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 3',
+    progreso:40,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 4',
+    progreso:60,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 5',
+    progreso:20,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 6',
+    progreso:10,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 7',
+    progreso:50,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 8',
+    progreso:80,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 9',
+    progreso:80,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   },
   {
     title: 'Shiba Inu 10',
+    progreso:80,
     subtitle: 'Dog Breed',
     text: 'The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.'
   }
@@ -74,6 +85,9 @@ const DATA: Card[] = [
   styleUrls: ['./projectsList.component.scss']
 })
 export class ProjectsListComponent implements OnInit, OnDestroy {
+  color = 'primary';
+  mode:any = 'determinate';
+  value = 50;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
    obs?: Observable<any>;

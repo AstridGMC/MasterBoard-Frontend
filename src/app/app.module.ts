@@ -16,6 +16,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule } from './demo-material-module';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
+
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { CommonModule } from '@angular/common';
+
+
+import * as moment from 'moment';
+
+
+export function momentAdapterFactory() {
+  return adapterFactory(moment);
+};
+//import { CalendarModule, DateAdapter, adapterFactory  } from 'angular-calendar';
 
 @NgModule({
   declarations: [
@@ -23,9 +39,10 @@ import { SpinnerComponent } from './shared/spinner.component';
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
-    
   ],
   imports: [
+    CommonModule,
+    NgbModalModule,
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
@@ -33,7 +50,10 @@ import { SpinnerComponent } from './shared/spinner.component';
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
+    
+    FlatpickrModule,
     AppSidebarComponent,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
   ],
   providers: [
     {

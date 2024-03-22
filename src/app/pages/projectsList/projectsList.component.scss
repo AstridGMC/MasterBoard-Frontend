@@ -6,3 +6,67 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
+
+  $black: #282828;
+$point: rgb(65, 211, 255);
+$point-light: lighten($point, 5%);
+
+$ratio: 1;
+$card_width: 250px;
+$card_height:250px;
+$card_padding: 20px;
+$card-bgcolor: white;
+$card_margin: 5px;
+$card_round: 10px;
+$card-shadow: -20px -20px 0px 0px black;
+$card-padding-basis: 15px;
+$card_head_padding: 0px 0px $card-padding-basis 0px;
+
+
+
+
+.card{
+  background-color: $card-bgcolor;
+  width: $card_width;
+  min-height: $card_height;
+  display: -webkit-box;
+  
+  display: -ms-flexbox;
+  
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: $card_padding;
+  margin: $card_margin;
+  
+  -webkit-box-shadow: $card-shadow;
+  box-shadow: $card-shadow;
+  border-radius: $card_round;
+  
+  -webkit-animation-name: shadow-show; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
+  animation-name: shadow-show;
+  animation-duration: 1.5s;
+  
+  -webkit-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
+  -o-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
+  transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
+
+
+  
+  
+ 
+  button{
+    border: none;
+    background-color: $point;
+    width: 50%;
+    margin-right:10px;
+    padding: 10px 10x;
+    color: white;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-transform: uppercase;
+  }
+  
+}

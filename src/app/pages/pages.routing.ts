@@ -4,6 +4,7 @@ import { DevelopersComponent } from './developers/Developers.component';
 import { CreateDeveloperComponent } from './createDeveloper/createDeveloper.component';
 
 import { ProjectsListComponent } from './projectsList/projectsList.component';
+import { CalendarComponent } from './calendar/calendar.component';
 export const PagesRoutes: Routes = [
   {
     path: 'developers',
@@ -14,6 +15,9 @@ export const PagesRoutes: Routes = [
   },{
     path: 'projectList',
     component:ProjectsListComponent
+  },{
+    path: 'calendar',
+    component:CalendarComponent
   },
   
 ];

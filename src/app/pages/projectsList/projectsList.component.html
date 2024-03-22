@@ -1,21 +1,31 @@
 <mat-card>
     <mat-card-content  direction="row" justify="flex-start" alignItems="flex-start">
-        <div direction="row"  class="row">
-      <mat-card class="col-4" *ngFor="let card of obs | async">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
+        <div direction="row"  class="row" style="width:auto; margin-left: 5%; margin-right: 5%; padding-left:6%">
+      <mat-card class="col-3" *ngFor="let card of obs | async" style="margin: 1.7rem;  border-color: rgb(117, 211, 255); border-width: 1px;" class="card">
+        <mat-progress-bar
+        class="example-margin"
+        [color]="color"
+        [mode]="mode"
+        [value]="card.progreso"
+        [bufferValue]=100>
+    </mat-progress-bar>
+        <mat-card-header>
+               
+            <!-- <div mat-card-avatar class="example-header-image"></div>--> 
               <mat-card-title>{{card.title}}</mat-card-title>
-              <mat-card-subtitle>{{card.subtitle}}</mat-card-subtitle>
+              <mat-card-subtitle style="padding-bottom: 2px;">{{card.subtitle}}</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-content>
+            <mat-card-content style="margin: 0%; padding: 0%; text-align: justify;">
               <p>{{card.text}}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
+              <button mat-button style="margin-left: 25%;">VER MAS</button>
+             <!-- <button mat-button>SHARE</button>-->
             </mat-card-actions>
           </mat-card>
+          
         </div>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        <mat-paginator [pageSizeOptions]="[6, 12, 24, 100]"></mat-paginator>
     </mat-card-content>
+    
 </mat-card>
