@@ -3,7 +3,7 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import StackBlitzSDK from '@stackblitz/sdk';
 import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2';
-import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
+//import { sources as demoUtilsSources } from './demo-modules/demo-utils/sources';
 import { Subject } from 'rxjs';
 import { NgbNav } from '@ng-bootstrap/ng-bootstrap/nav/nav';
 
@@ -23,7 +23,7 @@ interface Demo {
   darkTheme: boolean;
   tags: string[];
 }
-
+/*
 function getSources(folder: string): Promise<Source[]> {
   return import('./demo-modules/' + folder + '/sources.ts').then(
     ({ sources }) => {
@@ -77,16 +77,16 @@ const dependencyVersions: any = {
   rrule: require('rrule/package.json').version,
   fontAwesome: require('@fortawesome/fontawesome-free/package.json').version,
   positioning: require('positioning/package.json').version,
-  flatpickr: require('flatpickr/package.json').version,
-  angularxFlatpickr: require('angularx-flatpickr/package.json').version,
-};
+  //flatpickr: require('flatpickr/package.json').version,
+ // angularxFlatpickr: require('angularx-flatpickr/package.json').version,
+};*/
 
 @Component({
   selector: 'mwl-demo-app',
-  styleUrls: ['./calendar.component.css'],
+  styleUrls: ['./calendar.component.scss'],
   templateUrl: './calendar.component.html',
 })
-export class DemoAppComponent implements OnInit {
+export class CalendarComponent implements OnInit {
   @ViewChild('nav') nav!: NgbNav;
   demos: Demo[]=[];
   filteredDemos: Demo[] = [];
@@ -107,7 +107,7 @@ export class DemoAppComponent implements OnInit {
     const defaultRoute = this.router.config.find(
       (route) => route.path === '**'
     );
-
+/*
     this.demos = this.router.config
       .filter((route) => route.path !== '**')
       .map((route) => ({
@@ -116,7 +116,7 @@ export class DemoAppComponent implements OnInit {
         darkTheme: route.data?.["darkTheme"],
         tags: route.data?.["tags"] || [],
       }));
-    this.updateFilteredDemos();
+    this.updateFilteredDemos();*/
 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -144,6 +144,7 @@ export class DemoAppComponent implements OnInit {
         });
       });
 */
+/*
     const script = document.createElement('script');
     script.async = true;
     script.setAttribute('data-uid', '7c1627e655');
@@ -251,5 +252,5 @@ platformBrowserDynamic().bootstrapModule(BootstrapModule).then(ref => {
     setTimeout(() => {
       this.copied$.next(false);
     }, 1000);
-  }
-}
+  }*/
+}}

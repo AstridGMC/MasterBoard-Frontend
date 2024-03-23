@@ -19,7 +19,7 @@ import { SpinnerComponent } from './shared/spinner.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 
-import { FlatpickrModule } from 'angularx-flatpickr';
+//import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CommonModule } from '@angular/common';
@@ -51,7 +51,7 @@ export function momentAdapterFactory() {
     SharedModule,
     RouterModule.forRoot(AppRoutes),
     
-    FlatpickrModule,
+    //FlatpickrModule,
     AppSidebarComponent,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
   ],

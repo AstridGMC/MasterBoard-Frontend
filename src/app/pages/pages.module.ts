@@ -20,7 +20,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 
 
-import { FlatpickrModule } from 'angularx-flatpickr';
+//import { FlatpickrModule } from 'angularx-flatpickr';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -34,7 +34,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     DemoMaterialModule,
     HttpClientModule,
     FormsModule,
-    FlatpickrModule.forRoot(),
+   // FlatpickrModule.forRoot(),
     ReactiveFormsModule,
     CdkTableModule,
     DevelopersComponent,
@@ -42,8 +42,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     MatPaginatorModule,
     ProjectsListComponent,
     CalendarModule,
-    
-
   ],
   providers: [],
 })
