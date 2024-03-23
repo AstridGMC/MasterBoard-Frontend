@@ -79,8 +79,6 @@ const DATA: Card[] = [
 
 @Component({
   selector: 'projectList',
-  standalone: true,
-  imports: [DemoMaterialModule, MatButtonModule, NgFor, NgForOf,CommonModule],
   templateUrl: './projectsList.component.html',
   styleUrls: ['./projectsList.component.scss']
 })

@@ -1,10 +1,10 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Ciudad } from 'src/app/data/model/general';
+import { Project } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.encomiendaBackendUrl + 'ciudad';
+const baseUrl = environment.gestorBackendUrl + 'ciudad';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class CiudadService {
   constructor(private http: HttpClient) {}
 
 
-  save(entity: Ciudad): Observable<any> {
+  save(entity: Project): Observable<any> {
     if (entity.id) {
       return this.http.patch<any>(`${baseUrl}/${entity.id}`, entity);
     }

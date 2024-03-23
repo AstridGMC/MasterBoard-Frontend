@@ -3,8 +3,9 @@ import { Routes } from '@angular/router';
 import { DevelopersComponent } from './developers/Developers.component';
 import { CreateDeveloperComponent } from './createDeveloper/createDeveloper.component';
 
-import { ProjectsListComponent } from './projectsList/projectsList.component';
+import { ProjectsListComponent } from './project/projectsList/projectsList.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { ProjectComponent } from './project/project.component';
 export const PagesRoutes: Routes = [
   {
     path: 'developers',
@@ -18,6 +19,9 @@ export const PagesRoutes: Routes = [
   },{
     path: 'calendar',
     component:CalendarComponent
+  },{
+    path: 'project',
+    component:ProjectComponent
   },
   
 ];

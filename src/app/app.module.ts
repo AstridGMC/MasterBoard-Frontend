@@ -1,5 +1,9 @@
 
 import { BrowserModule } from '@angular/platform-browser';
+import { ToasterComponent } from './commos/toaster/toaster.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+import { AuthInterceptor } from './security/interceptors/auth-interceptor';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +11,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
-
+import{CheckPermissionDirective} from'./directives/check-permission.directive';
 import {FormControl,  ReactiveFormsModule} from '@angular/forms';
 import { FullComponent } from './layouts/full/full.component';
 import { AppHeaderComponent } from './layouts/full/header/header.component';
@@ -39,6 +43,7 @@ export function momentAdapterFactory() {
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
+    ToasterComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +55,7 @@ export function momentAdapterFactory() {
     HttpClientModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
-    
+    NgbModule,
     //FlatpickrModule,
     AppSidebarComponent,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),

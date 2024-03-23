@@ -5,50 +5,40 @@ export enum PermissionTypeEnum{
     READ,
     UPDATE,
     DELETE,
-    ALL
+    ALL,
+    NULL
 }
 
 export enum EntityEnum{
-    CIUDAD,
-    PAQUETE,
-    VEHICULO
+    PROJECT,
+    DEVELOPER,
 }
 
 class Permission {
-    types: PermissionTypeEnum[]
-    entity: EntityEnum
-    rol: RoleEnum
+    types!: PermissionTypeEnum[]
+    entity!: EntityEnum
+    rol!: RoleEnum
 }
 
-const rolePermissions : Permission[] =[
+export const rolePermissions : Permission[] =[
     {
         types:[PermissionTypeEnum.ALL],
-        entity: EntityEnum.CIUDAD,
+        entity: EntityEnum.PROJECT,
         rol: RoleEnum.ADMIN
     },
     {
         types:[PermissionTypeEnum.ALL],
-        entity: EntityEnum.PAQUETE,
-        rol: RoleEnum.ADMIN
-    },
-    {
-        types:[PermissionTypeEnum.ALL],
-        entity: EntityEnum.VEHICULO,
+        entity: EntityEnum.DEVELOPER,
         rol: RoleEnum.ADMIN
     },
     {
         types:[PermissionTypeEnum.READ],
-        entity: EntityEnum.CIUDAD,
-        rol: RoleEnum.OPERATOR
+        entity: EntityEnum.PROJECT,
+        rol: RoleEnum.PROJECT_MANAGER
     },
     {
         types:[PermissionTypeEnum.READ],
-        entity: EntityEnum.PAQUETE,
-        rol: RoleEnum.OPERATOR
-    },
-    {
-        types:[PermissionTypeEnum.READ],
-        entity: EntityEnum.VEHICULO,
-        rol: RoleEnum.OPERATOR
+        entity: EntityEnum.PROJECT,
+        rol: RoleEnum.DEVELOPER
     }
 ]

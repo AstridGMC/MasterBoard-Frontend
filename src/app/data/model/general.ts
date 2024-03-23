@@ -1,8 +1,7 @@
-export class Ciudad {
+export class Project {
   id!:number;
   nombre!: string;
   descripcion!: string;
-  departamento!: string;
 }
 
 export class Puesto {
@@ -22,7 +21,7 @@ export class Sucursal {
   longitud!: number;
   ciudad_id!: number;
   ciudad!: string;
-  tiposucursal_id:number;
+  tiposucursal_id!:number;
   tipoSucursal!: string;
 }
 
@@ -36,9 +35,9 @@ export class Usuario {
   rol_id!: number;
   sucursal_id!: number;
   puesto_id!:string;
-  rol:string;
-  sucursal:string;
-  puesto:string
+  rol!:string;
+  sucursal!:string;
+  puesto!:string
 }
 
 export class Vehiculo{
