@@ -1,19 +1,19 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Puesto } from 'src/app/data/model/general';
+import { CaseType } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.encomiendaBackendUrl + 'puesto';
+const baseUrl = environment + 'caseType';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PuestoService {
+export class TypeCaseService {
   constructor(private http: HttpClient) {}
 
 
-  save(entity: Puesto): Observable<any> {
+  save(entity: CaseType): Observable<any> {
     if (entity.id) {
       return this.http.patch<any>(`${baseUrl}/${entity.id}`, entity);
     }

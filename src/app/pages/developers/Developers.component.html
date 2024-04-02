@@ -4,12 +4,10 @@
         <mat-card-title>
           <h2>Desarrolladores</h2>
         </mat-card-title>   
-
         <div class="container" style="padding-left: 60%; padding-bottom: 2rem;">
           <button mat-raised-button color="primary" class=" col align-self-end">+ Agregar nuevo desarrollador</button>
         </div>
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
             <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
           
@@ -40,7 +38,5 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          
-          
     </mat-card-content>
 </mat-card>

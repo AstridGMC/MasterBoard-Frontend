@@ -1,23 +1,22 @@
 <mat-card>
     <mat-card-content class="align-items-center">
-
         <div style=" padding-left:10%">
             <form class="example-form">
-                <mat-card-title>Nuevo Desarrollador</mat-card-title>
-                <mat-card-subtitle>Datos del nuevo usuario</mat-card-subtitle>
+                <mat-card-title>Nuevo Proyecto</mat-card-title>
+                <mat-card-subtitle>Datos del nuevo proyecto</mat-card-subtitle>
                 <div class="">
                     <mat-form-field style="width: 47%;" class="row align-self-start">
-                        <mat-label>Nombre</mat-label>
+                        <mat-label>Nombre*</mat-label>
                         <input matInput #input maxlength="10" placeholder="Nombre">
                         <!--<mat-hint >{{input.value.length}}/10</mat-hint>-->
                     </mat-form-field>
 
-                    <mat-form-field style="width: 47%; padding-left: 4%;" class="row align-self-start">
+                    <!--<mat-form-field style="width: 47%; padding-left: 4%;" class="row align-self-start">
                         <mat-label>Apellidos</mat-label>
                         <input matInput #input maxlength="10" placeholder="Apellidos">
-                        <!-- <mat-hint >{{input.value.length}}/10</mat-hint>-->
+                        <\!-- <mat-hint >{{input.value.length}}/10</mat-hint>--/>
                     </mat-form-field>
-                    <!--<mat-form-field  style="width: 47%; padding-left: 4%;" class="row align-self-end">
+                   <mat-form-field  style="width: 47%; padding-left: 4%;" class="row align-self-end">
                         <mat-label>Apellidos</mat-label>
                         <mat-select>
                             <mat-option value="option">Option</mat-option>
@@ -26,35 +25,33 @@
                     </mat-form-field>-->
                 </div>
                 <div>
-                    <mat-form-field style="width: 47%; " class="row align-self-start">
-                        <mat-label>Fecha de Nacimiento</mat-label>
-                        <input matInput [matDatepicker]="picker" [value]="date.value">
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-
-                    <mat-form-field style="width: 47%; padding-left: 4%;" class="row align-self-end">
-                        <mat-label>Sueldo/hora</mat-label>
-                        <input matInput type="number" placeholder="sueldo/hora" pattern="[0-9]{10}">
+                    <mat-form-field style="width: 80%; " class="row align-self-start">
+                        <mat-label>Descripcion*</mat-label>
+                        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                            cdkAutosizeMaxRows="5" placeholder="descripcion del proyecto"></textarea>
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-form-field  style="width: 47%; " class="row align-self-start"> 
-                        <mat-label>Enter your email</mat-label>
-                        <input matInput placeholder="pat@example.com"[formControl]="email"  required>
-                        <mat-error *ngif="email.invalid">{{getErrorMessage()}}</mat-error>
+                    <mat-form-field style="width: 80%; " class="row align-self-end">
+                        <mat-label>url*</mat-label>
+                        <input matInput type="text" placeholder="url" >
                     </mat-form-field>
-                    <mat-form-field style="width: 47%; padding-left: 4%;"  class="row align-self-end">
-                        <mat-label>Enter your password</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'">
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </button>
-                      </mat-form-field>
+                </div>
+                <div>
+                        <mat-form-field style="width: 80%; " class="row align-self-end">
+                            <mat-label>Administrador de Proyecto*</mat-label>
+                            <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" class="row  d-flex ">
+                              @for (option of filteredOptions | async; track option) {
+                                <mat-option [value]="option" >{{option.email}}
+                                <h5> {{option.nombres}} {{option.apellidos}}</h5></mat-option>
+                              }
+                            </mat-autocomplete>
+                          </mat-form-field>
                 </div>
                 <div class="button-row d-flex align-items-center"
                     style=" display: flex; align-items: center;  justify-content: center;">
-                    <button mat-raised-button color="accent" class="align-self-end">Guardar Usuario</button>
+                    <button mat-raised-button color="accent">Guardar Proyecto Nuevo</button>
                 </div>
             </form>
         </div>

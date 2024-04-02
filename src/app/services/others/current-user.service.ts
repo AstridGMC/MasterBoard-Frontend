@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ToasterEnum } from 'src/global/toaster-enum';
@@ -57,7 +57,7 @@ export class CurrentUserService {
   getMyRole() {
     let authToken = localStorage.getItem('auth_token') + '';
     try {
-      let dataToken: any = jwt_decode(authToken);
+      let dataToken: any = jwtDecode(authToken);
       return dataToken.rol;
     } catch (error) {
       return undefined;
@@ -67,7 +67,7 @@ export class CurrentUserService {
   getMyEmail() {
     let authToken = localStorage.getItem('auth_token') + '';
     try {
-      let dataToken: any = jwt_decode(authToken);
+      let dataToken: any = jwtDecode(authToken);
       return dataToken.sub;
     } catch (error) {
       return undefined;

@@ -1,0 +1,152 @@
+<mat-card>
+    <mat-card-content class="align-items-center">
+        <div class="formbold-main-wrapper" [hidden]="!list">
+            <div class="formbold-form-wrapper">
+                <form #typeCaseForm>
+                    <div class="formbold-form-title">
+                        <h2 class="">Tipo De Caso</h2>
+                        <p>Los tipos de caso creados estaran disponibles para todos los proyecto</p>
+                    </div>
+                    <div>
+                        <h5>Datos del tipo de caso</h5>
+                        <label class="formbold-form-label"> Nombre:</label>
+                        
+                        <div class="formbold-input-flex">
+                            <mat-form-field appearance="outline" class="w-100" color="primary">
+                                <input matInput type="text" id="nombre" name="nombre" [(ngModel)]="caseType.name"
+                                    class="formbold-form-input" required #nombreInput="ngModel" required
+                                    style="width: 90%;" />
+                                <mat-hint class="mat-error" *ngIf="!caseType.name && nombreInput.touched">Ingresa el
+                                    nombre del tipo de caso</mat-hint>
+                            </mat-form-field>
+                        </div>
+                       
+                        <div class="formbold-input-flex">
+                            <div>
+                                <label class="formbold-form-label"> Descripcion:</label>
+                                <mat-form-field appearance="outline" color="primary">
+                                    <textarea matInput class="formbold-form-input" multiline #descriptionInput="ngModel"
+                                        name="description" [(ngModel)]="caseType.description" required></textarea>
+                                    <mat-hint class="mat-error"
+                                        *ngIf="!caseType.description && descriptionInput.touched">Ingresa la descripcion del tipo de caso</mat-hint>
+                                </mat-form-field>
+                            </div>
+                            
+                            <div>
+                                <label for="descripcionlbl" class="formbold-form-label"
+                                        style="padding-left: 4%;">Color de etiqueta:</label>
+                                <mat-form-field  color="primary" style="padding-top: 0%; margin-top: 0%;">
+                                    
+                                    <input matInput  [(colorPicker)]="color" [style.background]="color" #colorInput="ngModel"
+                                        name="color" required [(ngModel)]="caseType.label_color"
+                                        style="margin-top: 0rem; height: 4.8rem;" />
+                                    <mat-hint class="mat-error" *ngIf="!caseType.label_color && colorInput.touched">Ingresa
+                                        el color de la etiqueta</mat-hint>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr />
+                    <button mat-flat-button color="primary" type="submit" (click)="save()">Guardar Puesto</button>
+
+                </form>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+
+<!-- ============================================================== -->
+<!-- row -->
+<!-- ============================================================== -->
+<div class="row">
+    <!-- Card column -->
+    <div class="col-12">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title>Error State <span
+                        class="bg-success text-white rounded font-12 p-l-5 p-r-5">New</span></mat-card-title>
+                <mat-card-subtitle>The stepper can now show error states by simply providing the <code>showError</code>
+                    option to the <code>STEPPER_GLOBAL_OPTIONS</code> in your application's root module as mentioned
+                    above.</mat-card-subtitle>
+                <mat-horizontal-stepper>
+                    <h1>fffff</h1>
+                </mat-horizontal-stepper>
+                <mat-horizontal-stepper linear #steppererror>
+                    <h1>fffff</h1>
+                    <mat-step [stepControl]="errorfirstFormGroup" errorMessage="Name is required.">
+                        <form [formGroup]="errorfirstFormGroup">
+                            <ng-template matStepLabel>Fill out your name</ng-template>
+                            <mat-form-field>
+                                <input matInput placeholder="Last name, First name" formControlName="errorfirstCtrl"
+                                    required>
+                            </mat-form-field>
+                            <div>
+                                <button mat-raised-button color="accent" matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step [stepControl]="errorsecondFormGroup" errorMessage="Address is required.">
+                        <form [formGroup]="errorsecondFormGroup">
+                            <ng-template matStepLabel>Fill out your address</ng-template>
+                            <mat-form-field>
+                                <input matInput placeholder="Address" formControlName="errorsecondCtrl" required>
+                            </mat-form-field>
+                            <div class="button-row">
+                                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                                <button mat-raised-button color="accent" matStepperNext>Next</button>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Done</ng-template>
+                        You are now done.
+                        <div class="button-row">
+                            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                            <button mat-raised-button color="warn" (click)="steppererror.reset()">Reset</button>
+                        </div>
+                    </mat-step>
+
+                </mat-horizontal-stepper>
+
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your name</ng-template>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-stepper>

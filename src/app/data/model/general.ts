@@ -1,52 +1,81 @@
+import { Timestamp } from "rxjs";
+import { EntityEnum } from "src/global/permissions";
+
 export class Project {
   id!:number;
+  projectManager!:User;
   nombre!: string;
   descripcion!: string;
+  background_url!:string;
+  is_active:boolean=false;
+  is_public:boolean= false;
+  creacion_date!:string;
+  actualizacion_date!:string;
 }
 
-export class Puesto {
+export class card{
   id!:number;
-  descripcion!: string;
-  nombre!: string;
-  salario_horario!: number;
-  
+  name!:string;
+  description!:string;
+  due_date!: string;
+  remainder_date!: string;
+  is_active: boolean=false;
+  state!: string;
+  case_type!:number;
+  created_at_date!:string;
+  updated_at_date!:string;
+  develop_assigned!: User;
 }
 
-
-export class Sucursal {
+export class UserPManagerList {
   id!:number;
-  nombre!: string;
-  direccion!: string;
-  latitud!: number;
-  longitud!: number;
-  ciudad_id!: number;
-  ciudad!: string;
-  tiposucursal_id!:number;
-  tipoSucursal!: string;
-}
-
-export class Usuario {
-  id!:number;
-  nombre!: string;
-  username!: string;
+  nombres!: string;
+  apellidos!: string;
   email!: string;
-  password!: string;
-  horas!: number;
-  rol_id!: number;
-  sucursal_id!: number;
-  puesto_id!:string;
   rol!:string;
-  sucursal!:string;
-  puesto!:string
 }
 
-export class Vehiculo{
+export class User {
   id!:number;
-  placa!: string;
-  capacidad_lb!:number;
-  costokm!: number;
-  tipovehiculo_id!: number;
-  sucursal_id!: number;
-  sucursal!: string;
-  tipovehiculo!: string;
+  nombres!: string;
+  appellidos!: string;
+  adress!: string;
+  phone!: string;
+  email!: string;
+  img_url!:string;
+  rol!: string;
+  password!: string;
+  salary_per_hour!: number;
+}
+
+export class UserInfo {
+  id!:number;
+  nombres!: string;
+  appellidos!: string;
+  adress!: string;
+  phone!: string;
+  email!: string;
+  img_url!:string;
+  rol!: string;
+  password!: string;
+  salary_per_hour!: string;
+}
+
+
+export class CaseType{
+  id!: number;
+  name!:string;
+  description!: string;
+  project_id: number=0;
+  created_at!: string;
+  updated_at!: string;
+  label_color!: string;
+}
+
+//case_type_flow
+export class step{
+  id!:number;
+  stage!: string;
+  order!:number;
+  case_tyoe_id!: number;
 }

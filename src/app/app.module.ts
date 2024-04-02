@@ -1,7 +1,7 @@
 
 import { BrowserModule } from '@angular/platform-browser';
 import { ToasterComponent } from './commos/toaster/toaster.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
 import { AuthInterceptor } from './security/interceptors/auth-interceptor';
 import { NgModule } from '@angular/core';
@@ -22,13 +22,15 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 //import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CommonModule } from '@angular/common';
 
 
+import { MatStepperModule } from '@angular/material/stepper';
 import * as moment from 'moment';
 
 
@@ -44,8 +46,11 @@ export function momentAdapterFactory() {
     AppHeaderComponent,
     SpinnerComponent,
     ToasterComponent,
+    
   ],
   imports: [
+    MatStepperModule,
+    DemoMaterialModule, FormsModule, ReactiveFormsModule,
     CommonModule,
     NgbModalModule,
     BrowserModule,
@@ -59,6 +64,8 @@ export function momentAdapterFactory() {
     //FlatpickrModule,
     AppSidebarComponent,
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [
     {

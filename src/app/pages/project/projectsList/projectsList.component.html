@@ -19,7 +19,7 @@
               <p>{{card.text}}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button style="margin-left: 25%;">VER MAS</button>
+              <button mat-button (click)="openDialog()" style="margin-left: 25%;" onclick="selectedId=card.text">VER MAS</button>
              <!-- <button mat-button>SHARE</button>-->
             </mat-card-actions>
           </mat-card>
@@ -29,3 +29,11 @@
     </mat-card-content>
     
 </mat-card>
+
+<mat-dialog-content class="mat-typography " hidden>
+ <projectDetail [projectId]="selectedId" ></projectDetail>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

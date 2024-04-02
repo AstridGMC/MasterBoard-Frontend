@@ -5,12 +5,14 @@ export interface Menu {
   name: string;
   type: string;
   icon: string;
+
 }
 
 const MENUITEMS = [
   { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
-  { state: 'projectList', type: 'link', name: 'Proyectos', icon: 'table_chart' },
-  { state: 'projectList2', type: 'link', name: 'Mis Proyectos', icon: 'table_chart' },
+  { state: 'projects', type: 'link', name: 'Proyectos', icon: 'table_chart' },
+  { state: 'typeCases', type: 'link', name: 'tipos de caso', icon: 'assignment_turned_in' },
+  { state: 'projectList', type: 'link', name: 'Mis Proyectos', icon: 'table_chart' },
   { state: 'Proximos', type: 'link', name: 'Proximos', icon: 'access_alarms' },
   { state: 'nuevoProyecto', type: 'link', name: 'Nuevo Proyecto', icon: 'control_point' },
   { state: 'developers', type: 'link', name: 'Developers', icon: 'supervisor_account' },

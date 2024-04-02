@@ -3,18 +3,18 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepperModule } from '@angular/material/stepper';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
-import { StepTypeCaseComponent} from '../stepTypeCase/stepTypeCase.component'
+
 @Component({
-	selector: 'app-stepper',
+	selector: 'step-type-case',
 	standalone: true,
-	imports: [DemoMaterialModule, FormsModule, ReactiveFormsModule, StepTypeCaseComponent],
-	templateUrl: './stepper.component.html',
-	styleUrls: ['./stepper.component.scss'],
+	imports: [DemoMaterialModule, FormsModule, ReactiveFormsModule],
+	templateUrl: './stepTypeCase.component.html',
+	styleUrls: ['./stepTypeCase.component.scss'],
 	providers: [{
 		provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
 	}]
 })
-export class StepperComponent implements OnInit {
+export class StepTypeCaseComponent implements OnInit {
 	isLinear = false;
 	firstFormGroup: FormGroup = Object.create(null);
 	secondFormGroup: FormGroup = Object.create(null);

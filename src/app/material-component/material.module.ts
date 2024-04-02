@@ -17,6 +17,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MenuComponent } from './menu/menu.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { StepperComponent } from './stepper/stepper.component';
+import {StepTypeCaseComponent} from './stepTypeCase/stepTypeCase.component';
 import { ExpansionComponent } from './expansion/expansion.component';
 import { ChipsComponent } from './chips/chips.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
@@ -56,7 +57,8 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
     TooltipComponent,
     SnackbarComponent,
     SliderComponent,
-    SlideToggleComponent
+    SlideToggleComponent,
+    StepTypeCaseComponent
   ],
   providers: [],
 })
