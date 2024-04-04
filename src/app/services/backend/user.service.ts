@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.gestorBackendUrl + 'users';
+const baseUrl = environment.gestorBackendUrl + 'v1/users';
 
 @Injectable({
   providedIn: 'root',

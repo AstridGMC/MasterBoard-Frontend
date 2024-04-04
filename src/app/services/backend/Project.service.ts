@@ -36,6 +36,7 @@ export class ProjectService {
     return this.http.get<HttpResponse<any>>(baseUrl, {
       params: params,
       observe: 'response',
+     // headers: this.headers
     });
   }
 
