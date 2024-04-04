@@ -33,6 +33,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 //import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { UnauthInterceptor } from './security/interceptors/unauth-interceptor';
 import { CommonModule } from '@angular/common';
 
 
@@ -77,8 +78,12 @@ export function momentAdapterFactory() {
   providers: [
     {
       provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    }
+      useClass: PathLocationStrategy,
+        
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: UnauthInterceptor, multi: true },
+
   ],
   bootstrap: [AppComponent]
 })

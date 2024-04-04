@@ -33,7 +33,7 @@ export class CreateTypeCaseComponent implements OnInit,OnChanges {
 
 
   @Output() finishEvent = new EventEmitter<any>();
-  @ViewChild('puestoForm', { read: NgForm }) form!: NgForm;
+  @ViewChild('typeCaseForm', { read: NgForm }) form!: NgForm;
   caseType: CaseType = new CaseType();
   list = true;
   color:any;
@@ -52,7 +52,6 @@ export class CreateTypeCaseComponent implements OnInit,OnChanges {
   isLinear = false;
   ngOnInit(): void {
  
-
     this.firstFormGroup = this._formBuilder.group({
 			firstCtrl: ['', Validators.required]
 		});

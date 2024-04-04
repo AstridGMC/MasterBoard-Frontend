@@ -43,10 +43,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./typeCase.component.scss']
 })
 export class TypeCaseComponent implements OnInit, AfterViewInit {
+  permissionTypes = PermissionTypeEnum
     tabs = 0;
     displayedColumns: string[] = [
-      'index',
+      'id',
       'name',
+      'description',
+      'color',
+      'created_at',
       'actions',
     ];
     datos: CaseType[] = [{
@@ -57,7 +61,8 @@ export class TypeCaseComponent implements OnInit, AfterViewInit {
       name:'one',
       project_id:0,
       updated_at:'20/03/2024'},
-    { id:2,
+    { 
+      id:2,
       created_at:'21/02/2024',
       description:'d223ww',
       label_color:'red',

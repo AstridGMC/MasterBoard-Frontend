@@ -53,10 +53,10 @@ export class UserComponent implements OnInit, AfterViewInit {
       'telefono',
       'direccion',
       'rol',
-      'acciones',
+      'actions',
     ];
    
-    datos: UserInfo[] = [{
+    datos: any[] = [{
       id:0,
       firstName: "Astrid",
       lastName:"Mc",
@@ -137,7 +137,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       if(id){
         this.userService.delete(id).subscribe({
           next: () => {
-            this.toasterService.show({message:'Ciudad eliminada',type:ToasterEnum.SUCCESS})
+            this.toasterService.show({message:'Usuario eliminado',type:ToasterEnum.SUCCESS})
             this.getAll();
           },
         

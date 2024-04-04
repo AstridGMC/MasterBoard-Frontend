@@ -27,6 +27,7 @@ export class CurrentUserService {
       if (helper.isTokenExpired(authToken)) {
         localStorage.clear();
         return false;
+        
       }
       return true;
     }

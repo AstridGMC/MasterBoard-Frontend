@@ -49,6 +49,7 @@ export class User {
 }
 
 
+
 export class UserInfo {
   id!:number;
   firstName!: string;

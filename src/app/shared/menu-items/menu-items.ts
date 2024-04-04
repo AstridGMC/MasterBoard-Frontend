@@ -8,15 +8,32 @@ export interface Menu {
 
 }
 
-const MENUITEMS = [
+const MENUITEMS= [
   { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
   { state: 'projects', type: 'link', name: 'Proyectos', icon: 'table_chart' },
   { state: 'typeCases', type: 'link', name: 'tipos de caso', icon: 'assignment_turned_in' },
   { state: 'projectList', type: 'link', name: 'Mis Proyectos', icon: 'table_chart' },
   { state: 'Proximos', type: 'link', name: 'Proximos', icon: 'access_alarms' },
-  { state: 'nuevoProyecto', type: 'link', name: 'Nuevo Proyecto', icon: 'control_point' },
+  //{ state: 'nuevoProyecto', type: 'link', name: 'Nuevo Proyecto', icon: 'control_point' },
   { state: 'users', type: 'link', name: 'Usuarios', icon: 'supervisor_account' },
- 
+];
+
+
+const MENUITEMS_DEVELOPPER = [
+  { state: 'projects', type: 'link', name: 'Proyectos', icon: 'table_chart' },
+  { state: 'MyTypeCases', type: 'link', name: 'Mis TIpos de Caso', icon: 'access_alarms' },
+  //{ state: 'nuevoProyecto', type: 'link', name: 'Nuevo Proyecto', icon: 'control_point' },
+];
+
+const MENUITEMS_PM = [
+  { state: 'dashboard', name: 'Dashboard', type: 'link', icon: 'av_timer' },
+  { state: 'projects', type: 'link', name: 'Proyectos', icon: 'table_chart' },
+  { state: 'typeCases', type: 'link', name: 'tipos de caso', icon: 'assignment_turned_in' },
+  { state: 'Proximos', type: 'link', name: 'Proximos', icon: 'access_alarms' },
+  //{ state: 'nuevoProyecto', type: 'link', name: 'Nuevo Proyecto', icon: 'control_point' },
+  { state: 'users', type: 'link', name: 'Usuarios', icon: 'supervisor_account' },
+];
+ /*
   { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5' },
   { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },
   { state: 'lists', type: 'link', name: 'Lists', icon: 'view_list' },
@@ -57,12 +74,19 @@ const MENUITEMS = [
     type: 'link',
     name: 'Slide Toggle',
     icon: 'all_inclusive'
-  }
-];
+  }*/
+
 
 @Injectable()
 export class MenuItems {
   getMenuitem(): Menu[] {
     return MENUITEMS;
+  }
+
+  getMenuitemPM(): Menu[] {
+    return MENUITEMS_PM;
+  } 
+  getMenuitemDev(): Menu[] {
+    return MENUITEMS_DEVELOPPER;
   }
 }

@@ -22,16 +22,32 @@
     </mat-menu>
 
 </div>
-<mat-nav-list appAccordion>
-    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected">
+<mat-nav-list appAccordion><!--[appCheckPermission]="permissionTypes.ALL"-->
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected" >
         <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
             <mat-icon>{{ menuitem.icon }}</mat-icon>
             <span>{{ menuitem.name }}</span>
             <span fxFlex></span>
-
         </a>
-
-
     </mat-list-item>
 
+    <!--
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitemDev()" routerLinkActive="selected" [appCheckPermission]="permissionTypes.READ">
+        <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name }}</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+    -->
+    
+    <!--[appCheckPermission]="permissionTypes.UPDATE"
+    <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitemPM()" routerLinkActive="selected" >
+        <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+            <mat-icon>{{ menuitem.icon }}</mat-icon>
+            <span>{{ menuitem.name }}</span>
+            <span fxFlex></span>
+        </a>
+    </mat-list-item>
+-->
 </mat-nav-list>

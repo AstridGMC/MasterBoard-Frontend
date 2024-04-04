@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.gestorBackendUrl + 'usuario';
+const baseUrl = environment.gestorBackendUrl + 'users';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,6 @@ export class UserService {
   listAllHttp(queryParams: any): Observable<HttpResponse<any>> {
     const params = this.getQueryParams(queryParams);
     return this.http.get<HttpResponse<any>>(baseUrl, {
-      params: params,
       observe: 'response',
     });
   }

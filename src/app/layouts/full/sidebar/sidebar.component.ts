@@ -5,6 +5,8 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { PermissionTypeEnum } from 'src/global/permissions';
+
 @Component({
   selector: 'app-sidebar',
   standalone: true,
@@ -14,7 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppSidebarComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
-
+  permissionTypes = PermissionTypeEnum;
   private _mobileQueryListener: () => void;
 
   constructor(

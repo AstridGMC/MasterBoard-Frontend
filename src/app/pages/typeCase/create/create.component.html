@@ -31,24 +31,18 @@
                                         *ngIf="!caseType.description && descriptionInput.touched">Ingresa la descripcion del tipo de caso</mat-hint>
                                 </mat-form-field>
                             </div>
-                            
-                            <div>
-                                <label for="descripcionlbl" class="formbold-form-label"
+                        <div>
+                            <label for="descripcionlbl" class="formbold-form-label"
                                         style="padding-left: 4%;">Color de etiqueta:</label>
-                                <mat-form-field  color="primary" style="padding-top: 0%; margin-top: 0%;">
-                                    
+                            <hr>
                                     <input matInput  [(colorPicker)]="color" [style.background]="color" #colorInput="ngModel"
                                         name="color" required [(ngModel)]="caseType.label_color"
                                         style="margin-top: 0rem; height: 4.8rem;" />
-                                    <mat-hint class="mat-error" *ngIf="!caseType.label_color && colorInput.touched">Ingresa
-                                        el color de la etiqueta</mat-hint>
-                                </mat-form-field>
-                            </div>
-
+                        </div>
                         </div>
                     </div>
                     <hr />
-                    <button mat-flat-button color="primary" type="submit" (click)="save()">Guardar Puesto</button>
+                    <button mat-flat-button color="primary" type="submit" (click)="save()">Guardar Tipo de caso</button>
 
                 </form>
             </div>
@@ -114,39 +108,3 @@
         </mat-card>
     </div>
 </div>
-
-
-<mat-stepper #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
-            <mat-form-field>
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-        <form [formGroup]="secondFormGroup">
-            <mat-form-field>
-                <mat-label>Address</mat-label>
-                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
-            </mat-form-field>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-    </mat-step>
-</mat-stepper>
