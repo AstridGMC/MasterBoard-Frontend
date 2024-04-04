@@ -1,10 +1,10 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuario } from 'src/app/data/model/general';
+import { User } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.encomiendaBackendUrl + 'usuario';
+const baseUrl = environment.gestorBackendUrl + 'usuario';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +22,7 @@ export class UserService {
   }
 
   
-  save(entity: Usuario): Observable<any> {
+  save(entity: User): Observable<any> {
     if (entity.id) {
       return this.http.patch<any>(`${baseUrl}/${entity.id}`, entity);
     }
@@ -37,6 +37,8 @@ export class UserService {
   get(id: number): Observable<any> {
     return this.http.get<any>(`${baseUrl}/${id}`);
   }
+
+
 
   private getQueryParams(queryParams: any): HttpParams {
     let params = new HttpParams();

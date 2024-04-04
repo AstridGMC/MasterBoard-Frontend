@@ -6,7 +6,7 @@ import { FormControl, FormsModule, ReactiveFormsModule, NgForm, Validators, Form
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Project,UserPManagerList } from 'src/app/data/model/general';
-import { CiudadService } from 'src/app/services/backend/ciudad.service';
+import { ProjectService } from 'src/app/services/backend/Project.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import {Observable} from 'rxjs';
@@ -49,21 +49,21 @@ export class CreateProjectComponent implements OnInit, OnChanges {
 
   constructor(
     private toasterService: ToasterService,
-    private ciudadService: CiudadService
+    private projectService: ProjectService
   ) { }
 
   project: Project = new Project();
   @Input() projectId?: number;
   @Output() finishEvent = new EventEmitter<any>();
-  myControl = new FormControl<string | UserPManagerList>('');
-  filteredOptions?: Observable<UserPManagerList[]>;
+  myControl = new FormControl<string | any>('');
+  filteredOptions?: Observable<any[]>;
   date = new FormControl(new Date());
   hide = true;
   serializedDate = new FormControl(new Date().toISOString());
   email = new FormControl('', [Validators.required, Validators.email]);
 
 
-  options: UserPManagerList[] = [
+  userList: any[] = [
     {id:1, email: 'Mary@email.com', nombres:'mary', apellidos:'garcia', rol:'projectManager'}, 
     {id:1, email: 'Shelly@email.com', nombres:'Shelly', apellidos:'Orozco', rol:'projectManager'}, 
     {id:1, email: 'Carlos@email.com', nombres:'Carlos', apellidos:'Perez', rol:'projectManager'}, ];
@@ -71,7 +71,7 @@ export class CreateProjectComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     if (this.projectId) {
       //llenado de opcion editar
-      this.ciudadService.get(this.projectId).subscribe({
+      this.projectService.get(this.projectId).subscribe({
         next: (value) => {
           this.projectId = value.result
         }, error: () => {
@@ -85,14 +85,14 @@ export class CreateProjectComponent implements OnInit, OnChanges {
       startWith(''),
       map(value => {
         const name = typeof value === 'string' ? value : value?.email;
-        return name ? this._filter(name as string) : this.options.slice();
+        return name ? this._filter(name as string) : this.userList.slice();
       }),
     );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["projectId"]) {
-      this.ciudadService.get(changes["projectId"].currentValue).subscribe({
+      this.projectService.get(changes["projectId"].currentValue).subscribe({
         next: (value) => {
           this.project = value.result
         }, error: () => {
@@ -101,7 +101,17 @@ export class CreateProjectComponent implements OnInit, OnChanges {
       })
     }
   }
-  
+  getAll() {
+    this.projectService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.userList = value.body.result;
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -117,6 +127,6 @@ export class CreateProjectComponent implements OnInit, OnChanges {
   private _filter(name: string): UserPManagerList[] {
     const filterValue = name.toLowerCase();
 
-    return this.options.filter(option => option.email.toLowerCase().includes(filterValue));
+    return this.userList.filter(option => option.email.toLowerCase().includes(filterValue));
   }
 }

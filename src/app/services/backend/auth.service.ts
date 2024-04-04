@@ -19,7 +19,7 @@ export class AuthService {
   login(credentials: any): void {
     this.http
       .post<any>(
-        `${environment.encomiendaBackendUrl}usuario/login`,
+        `${environment.gestorBackendUrl}auth/login`,
         credentials,
         {
           headers: this.headers,
@@ -27,12 +27,14 @@ export class AuthService {
       )
       .pipe(
         mergeMap((token) => {
-          this.storeToken(token.result);
+          console.log(token);
+          this.storeToken(token.token);
           return of('');
         })
       )
       .subscribe({
         next: () => {
+          console.log("subscribe");
           this.toasterService.show({
             message: 'Inicio de sesion exitoso',
             type: ToasterEnum.SUCCESS,

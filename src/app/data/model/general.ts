@@ -37,30 +37,33 @@ export class UserPManagerList {
 
 export class User {
   id!:number;
-  nombres!: string;
-  appellidos!: string;
-  adress!: string;
+  firstName!: string;
+  lastName!: string;
+  address!: string;
   phone!: string;
   email!: string;
-  img_url!:string;
-  rol!: string;
+  imgUrl!:string;
+  role!: string;
   password!: string;
   salary_per_hour!: number;
 }
 
+
 export class UserInfo {
   id!:number;
-  nombres!: string;
-  appellidos!: string;
-  adress!: string;
+  firstName!: string;
+  lastName!: string;
+  address!: string;
   phone!: string;
   email!: string;
-  img_url!:string;
-  rol!: string;
-  password!: string;
-  salary_per_hour!: string;
+  imgUrl!:string;
+  role!: string;
+  authorities!:Array<string>;
 }
 
+class authority {
+  autority!:string;
+}
 
 export class CaseType{
   id!: number;

@@ -39,16 +39,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
     
   selector: 'create-developer',
-  standalone: true,
-  imports: [DemoMaterialModule,MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule],
-  templateUrl: './createDeveloper.component.html',
-  styleUrls: ['./createDeveloper.component.scss'],
-  providers:
-  [{ provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
-  { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT }],
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.scss']
   
 })
-export class CreateDeveloperComponent {
+export class CreateUserConponent {
     date = new FormControl(new Date());
     hide = true;
     serializedDate = new FormControl(new Date().toISOString());

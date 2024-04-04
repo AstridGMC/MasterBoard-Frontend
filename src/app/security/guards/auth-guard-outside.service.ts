@@ -14,6 +14,7 @@ export class AuthGuardOutsideService {
   canActivate(next: ActivatedRouteSnapshot): boolean {
     if (!this.currentUserService.isAuthenticated()) {
       this.currentUserService.logout();
+
     }else{
       this.router.navigate(['/dashboard']);
     }

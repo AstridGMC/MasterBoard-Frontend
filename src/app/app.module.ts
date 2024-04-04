@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ToasterComponent } from './commos/toaster/toaster.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
 
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+//Import Layouts
+import { BlankComponent } from './layouts/blank/blank.component';
+
 import { AuthInterceptor } from './security/interceptors/auth-interceptor';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -46,9 +52,10 @@ export function momentAdapterFactory() {
     AppHeaderComponent,
     SpinnerComponent,
     ToasterComponent,
-    
+    BlankComponent
   ],
   imports: [
+    
     MatStepperModule,
     DemoMaterialModule, FormsModule, ReactiveFormsModule,
     CommonModule,
@@ -63,7 +70,7 @@ export function momentAdapterFactory() {
     NgbModule,
     //FlatpickrModule,
     AppSidebarComponent,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
+    //CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
     MatInputModule,
     MatFormFieldModule
   ],

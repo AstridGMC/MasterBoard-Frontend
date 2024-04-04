@@ -25,7 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagesRoutes } from './pages.routing';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DevelopersComponent } from './developers/Developers.component';
-import { CreateDeveloperComponent } from './createDeveloper/createDeveloper.component';
 
 //PROJECTS
 import { ProjectsListComponent } from './project/projectsList/projectsList.component';
@@ -41,6 +40,10 @@ import {StepTypeCaseComponent} from '../material-component/stepTypeCase/stepType
 //CALENDAR
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
+
+//USERS
+import { UserComponent } from './user/user.component';
+import { CreateUserConponent } from './user/create/create.component';
 
 
 //import { FlatpickrModule } from 'angularx-flatpickr';
@@ -67,6 +70,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     TypeCaseComponent,
     CreateTypeCaseComponent,
 
+    UserComponent,
+    CreateUserConponent,
   ],
   imports: [
     DemoMaterialModule,
@@ -83,12 +88,12 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCardModule,
     RouterModule.forChild(PagesRoutes),
     HttpClientModule,
+    
     FormsModule,
     // FlatpickrModule.forRoot(),
     ReactiveFormsModule,
     CdkTableModule,
     DevelopersComponent,
-    CreateDeveloperComponent,
     MatPaginatorModule,
     CalendarModule,
     TablerIconsModule.pick(TablerIcons),

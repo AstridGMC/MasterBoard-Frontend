@@ -2,16 +2,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import {MatTableModule} from '@angular/material/table';
 
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild ,Input} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Project } from 'src/app/data/model/general';
+import { UserInfo } from 'src/app/data/model/general';
 import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
-import { ProjectService } from 'src/app/services/backend/Project.service';
+import { UserService } from 'src/app/services/backend/user.service';
 import { DialogService } from 'src/app/services/others/dialog.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 import { PermissionTypeEnum } from 'src/global/permissions';
 import { ToasterEnum } from 'src/global/toaster-enum';
+
+
+//import {SearchComponent} from './views/search/search.component';
+
 import {NgFor} from "@angular/common";
 //import { Project } from '@stackblitz/sdk';
 
@@ -37,30 +41,55 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 @Component({
   selector: 'developers-page',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
-export class ProjectComponent implements OnInit, AfterViewInit {
+export class UserComponent implements OnInit, AfterViewInit {
     tabs = 0;
     displayedColumns: string[] = [
-      'index',
-      'name',
-      'department',
-      'description',
-      'actions',
+      'id',
+      'nombres',
+      'apellidos',
+      'telefono',
+      'direccion',
+      'rol',
+      'acciones',
     ];
-    datos: Project[] = [];
+   
+    datos: UserInfo[] = [{
+      id:0,
+      firstName: "Astrid",
+      lastName:"Mc",
+      email:"astrid@gmail.com",
+      address: "direccion av. z.5",
+      phone: "34343456",
+      imgUrl: "string",
+      role: "administrator",
+      authorities: [
+        "administrator"
+      ]},
+      {
+        id:0,
+        firstName: "Juan",
+        lastName:"Juarez",
+        email:"juan@gmail.com",
+        address: "direccion av. z.5",
+        phone: "5454343",
+        imgUrl: "string",
+        role: "administrator",
+        authorities: [
+          "administrator"
+        ]},];
     @ViewChild('paginator') paginator!: MatPaginator;
   
-    dataSource = new MatTableDataSource<Project>(this.datos);
+    dataSource = new MatTableDataSource<UserInfo>(this.datos);
   
     list = true;
     selectedId!:number
-  
-    permissionTypes = PermissionTypeEnum
+    permissionTypes = PermissionTypeEnum;
   
     constructor(
-      private projectService: ProjectService,
+      private userService: UserService,
       private toasterService: ToasterService,
       private confirmationDialogService: DialogService,
     ) {}
@@ -71,6 +100,7 @@ export class ProjectComponent implements OnInit, AfterViewInit {
     }
   
     ngAfterViewInit(): void {
+      console.log('cargado')
       this.dataSource.paginator = this.paginator;
     }
   
@@ -79,10 +109,10 @@ export class ProjectComponent implements OnInit, AfterViewInit {
     }
   
     getAll() {
-      this.projectService.listAllHttp({}).subscribe({
+      this.userService.listAllHttp({}).subscribe({
         next: (value) => {
           this.datos = value.body.result;
-          this.dataSource = new MatTableDataSource<Project>(this.datos);
+          this.dataSource = new MatTableDataSource<UserInfo>(this.datos);
           this.dataSource.paginator = this.paginator;
         },
         error: () => {
@@ -103,11 +133,11 @@ export class ProjectComponent implements OnInit, AfterViewInit {
     }
   
     @needConfirmation()
-    deleteCiudad(id:any){
+    delete(id:any){
       if(id){
-        this.projectService.delete(id).subscribe({
+        this.userService.delete(id).subscribe({
           next: () => {
-            this.toasterService.show({message:'Proyecto eliminado con exito',type:ToasterEnum.SUCCESS})
+            this.toasterService.show({message:'Ciudad eliminada',type:ToasterEnum.SUCCESS})
             this.getAll();
           },
         

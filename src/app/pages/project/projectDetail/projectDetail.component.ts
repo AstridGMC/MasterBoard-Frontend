@@ -2,60 +2,61 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { FormControl, FormGroup,FormBuilder,FormsModule, ReactiveFormsModule, NgForm, Validators, FormGroupDirective } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, FormsModule, ReactiveFormsModule, NgForm, Validators, FormGroupDirective } from '@angular/forms';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { Project,User,UserPManagerList } from 'src/app/data/model/general';
-import { CiudadService } from 'src/app/services/backend/ciudad.service';
+import { Project, User, UserPManagerList } from 'src/app/data/model/general';
+import { ProjectService } from 'src/app/services/backend/Project.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
-import {map, startWith} from 'rxjs/operators';
-import {AsyncPipe} from '@angular/common';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { map, startWith } from 'rxjs/operators';
+import { AsyncPipe } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
 @Component({
-  selector: 'projectDetail',
-  templateUrl: './projectDetail.component.html',
-  styleUrls: ['./projectDetail.component.scss']
+	selector: 'projectDetail',
+	templateUrl: './projectDetail.component.html',
+	styleUrls: ['./projectDetail.component.scss']
 })
 export class ProjectDetailComponent {
-  projectManager:User={
-    id:1,
-    nombres:'marcos',
-    appellidos:'Nagera',
-    email: 'marcos_nagera@gmail.com',
-	adress:'desc',
-	phone:'33323233',
-	img_url:'ewewewe',
-	rol:'developper',
-	password:'000',
-	salary_per_hour:80.9
-  }
+	projectManager: User = {
+		id: 1,
+		firstName: 'marcos',
+		lastName: 'Nagera',
+		email: 'marcos_nagera@gmail.com',
+		address: 'desc',
+		phone: '33323233',
+		imgUrl: 'ewewewe',
+		role: 'developper',
+		password: '000',
+		salary_per_hour: 80.9
+	}
 
 
-  project:Project={
-	nombre:'Proyecto Unitario', 
-	id:1,
-	projectManager:this.projectManager,
-	descripcion:" ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus rem iure, nam doloribus magnam nesciunt illum obcaecati commodi praesentium quibusdam fugiat vel eum ipsam, eveniet soluta quis mollitia ratione perferend ",
-	background_url:'ddsda/dadada1',
-	is_active:true,
-	is_public:true,
-	creacion_date:'12/02/2024',
-	actualizacion_date:'12/02/2024'
+	project: Project = {
+		nombre: 'Proyecto Unitario',
+		id: 1,
+		projectManager: this.projectManager,
+		descripcion: " ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus rem iure, nam doloribus magnam nesciunt illum obcaecati commodi praesentium quibusdam fugiat vel eum ipsam, eveniet soluta quis mollitia ratione perferend ",
+		background_url: 'ddsda/dadada1',
+		is_active: true,
+		is_public: true,
+		creacion_date: '12/02/2024',
+		actualizacion_date: '12/02/2024'
 
-  }
-  @Input() projectId?: number;
+	}
+	@Input() projectId?: number;
+	projectselect: Project = new Project();
 
-  isLinear = false;
+	isLinear = false;
 	firstFormGroup: FormGroup = Object.create(null);
 	secondFormGroup: FormGroup = Object.create(null);
 
@@ -82,7 +83,11 @@ export class ProjectDetailComponent {
 	errorfirstFormGroup: FormGroup = Object.create(null);
 	errorsecondFormGroup: FormGroup = Object.create(null);
 
-	constructor(private _formBuilder: FormBuilder) { }
+	constructor(
+		private _formBuilder: FormBuilder,
+		private projectService: ProjectService,
+		private toasterService: ToasterService,
+	) { }
 
 	ngOnInit() {
 		this.firstFormGroup = this._formBuilder.group({
@@ -139,6 +144,15 @@ export class ProjectDetailComponent {
 		this.errorsecondFormGroup = this._formBuilder.group({
 			errorsecondCtrl: ['', Validators.required]
 		});
-	}
 
+		if (this.projectId) {
+			this.projectService.get(this.projectId).subscribe({
+				next: (value:any) => {
+					this.projectselect = value.result
+				}, error: () => {
+					this.toasterService.showGenericErrorToast();
+				},
+			})
+		}
+	}
 }

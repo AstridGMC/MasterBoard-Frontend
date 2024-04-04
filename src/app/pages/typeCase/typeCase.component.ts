@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CaseType } from 'src/app/data/model/general';
 import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
-import { CiudadService } from 'src/app/services/backend/ciudad.service';
+import { TypeCaseService } from 'src/app/services/backend/typeCase.service';
 import { DialogService } from 'src/app/services/others/dialog.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 import { PermissionTypeEnum } from 'src/global/permissions';
@@ -74,7 +74,7 @@ export class TypeCaseComponent implements OnInit, AfterViewInit {
    // permissionTypes = PermissionTypeEnum
   
     constructor(
-      private ciudadService: CiudadService,
+      private typeCaseService: TypeCaseService,
       private toasterService: ToasterService,
       private confirmationDialogService: DialogService,
     ) {}
@@ -94,7 +94,7 @@ export class TypeCaseComponent implements OnInit, AfterViewInit {
     }
   
     getAll() {
-      this.ciudadService.listAllHttp({}).subscribe({
+      this.typeCaseService.listAllHttp({}).subscribe({
         next: (value) => {
           this.datos = value.body.result;
           this.dataSource = new MatTableDataSource<CaseType>(this.datos);
@@ -120,9 +120,9 @@ export class TypeCaseComponent implements OnInit, AfterViewInit {
     @needConfirmation()
     delete(id:any){
       if(id){
-        this.ciudadService.delete(id).subscribe({
+        this.typeCaseService.delete(id).subscribe({
           next: () => {
-            this.toasterService.show({message:'Ciudad eliminada',type:ToasterEnum.SUCCESS})
+            this.toasterService.show({message:'Tipo de caso eliminado con exito',type:ToasterEnum.SUCCESS})
             this.getAll();
           },
         

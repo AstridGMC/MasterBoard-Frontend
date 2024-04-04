@@ -1,117 +1,113 @@
 <mat-dialog-content>
-<mat-card>
-  <div class="container sections-wrapper">
-    <header class="header">
-      <div class="container">
-        <div class="profile-content pull-left">
-          <h1 class="name">{{project.nombre}}</h1>
-          <h2 class="desc"><span class="sr-only"><b>Project Manager:</b></span>  {{project.projectManager}}</h2>
-        </div><!--//profile-->
-      </div><!--//container-->
-    </header><!--//header-->
-    <div class="row" style="padding-top: 10px;">
-      <div class="primary col-md-8 col-sm-12 col-xs-12">
-        <section class="about section">
-          <div class="section-inner">
-            <h2 class="heading">Resumen</h2>
-            <div class="content">
-              <p>{{project.descripcion}}</p>
-            </div><!--//content-->
-          </div><!--//section-inner-->
-        </section><!--//section-->
-
-        <div class="row">
-          <!-- Card column -->
-          <div class="col-12">
-            <mat-card>
-              <mat-card-content>
-                <mat-card-title>Stepper Label <span class="bg-success text-white rounded font-12 p-l-5 p-r-5">New</span></mat-card-title>
-                <mat-card-subtitle>If a step's label is only text, then the <code>label</code> attribute can be used.</mat-card-subtitle>
-                <mat-horizontal-stepper labelPosition="bottom" #stepperposition>
-                    <mat-step [stepControl]="positionfirstFormGroup">
-                        <form [formGroup]="positionfirstFormGroup">
-                            <ng-template matStepLabel>Fill out your name</ng-template>
-                            <mat-form-field>
-                                <input matInput placeholder="Last name, First name" formControlName="positionfirstCtrl" required>
-                            </mat-form-field>
-                            <div>
-                                <button mat-raised-button matStepperNext color="accent">Next</button>
-                            </div>
-                        </form>
-                    </mat-step>
-                    <mat-step [stepControl]="positionsecondFormGroup" optional>
-                        <form [formGroup]="positionsecondFormGroup">
-                            <ng-template matStepLabel>Fill out your address</ng-template>
-                            <mat-form-field>
-                                <input matInput placeholder="Address" formControlName="positionsecondCtrl" required>
-                            </mat-form-field>
-                            <div class="button-row">
-                                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-                            <button mat-raised-button color="accent" matStepperNext>Next</button>
-                            </div>
-                        </form>
-                    </mat-step>
-                    <mat-step>
-                        <ng-template matStepLabel>Done</ng-template>
-                        You are now done.
-                        <div class="button-row m-t-10">
-                            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-                            <button mat-raised-button color="warn" (click)="stepperposition.reset()">Reset</button>
-                        </div>
-                    </mat-step>
-                </mat-horizontal-stepper>
-              </mat-card-content>
-            </mat-card>    
+  <mat-card>
+    <div class="container sections-wrapper">
+      <header class="header">
+        <div class="container">
+          <div class="profile-content pull-left">
+            <h1 class="name">{{project.nombre}}</h1>
+            <h2 class="desc"><span class="sr-only"><b>Project Manager:</b></span>  {{project.projectManager}}</h2>
+          </div><!--//profile-->
+        </div><!--//container-->
+      </header><!--//header-->
+      <div class="row" style="padding-top: 10px;">
+        <div class="primary col-md-8 col-sm-12 col-xs-12">
+          <section class="about section">
+            <div class="section-inner">
+              <h2 class="heading">Resumen</h2>
+              <div class="content">
+                <p>{{project.descripcion}}</p>
+              </div><!--//content-->
+            </div><!--//section-inner-->
+          </section><!--//section-->
+  
+          <div class="row">
+            <!-- Card column -->
+            <div class="col-12">
+              <mat-card>
+                <mat-card-content>
+                  <mat-card-title>Stepper Label <span class="bg-success text-white rounded font-12 p-l-5 p-r-5">New</span></mat-card-title>
+                  <mat-card-subtitle>If a step's label is only text, then the <code>label</code> attribute can be used.</mat-card-subtitle>
+                  <mat-horizontal-stepper labelPosition="bottom" #stepperposition>
+                      <mat-step >
+                          <form>
+                              <ng-template matStepLabel>Fill out your name</ng-template>
+                             
+                              <div>
+                                  <button mat-raised-button matStepperNext color="accent">Next</button>
+                              </div>
+                          </form>
+                      </mat-step>
+                      <mat-step optional>
+                          <form >
+                              <ng-template matStepLabel>Fill out your address</ng-template>
+                              <div class="button-row">
+                                  <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                              <button mat-raised-button color="accent" matStepperNext>Next</button>
+                              </div>
+                          </form>
+                      </mat-step>
+                      <mat-step>
+                          <ng-template matStepLabel>Done</ng-template>
+                          You are now done.
+                          <div class="button-row m-t-10">
+                              <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                              <button mat-raised-button color="warn" (click)="stepperposition.reset()">Reset</button>
+                          </div>
+                      </mat-step>
+                  </mat-horizontal-stepper>
+                </mat-card-content>
+              </mat-card>    
+            </div>
           </div>
+          
+        </div><!--//primary-->
+        <div class="secondary col-md-4 col-sm-10 col-xs-10">
+          <aside class="info aside section">
+            <div class="section-inner">
+              <h2 class="heading sr-only">Basic Information</h2>
+              <div class="content">
+                <ul class="list-unstyled">
+                  <li><i class="fa fa-map-marker"></i><span class="sr-only"><b>Creacion:  </b></span>{{project.creacion_date}}</li>
+                  <li><i class="fa fa-link"></i><span class="sr-only">Desarrolladores:  </span>
+                    <ul>
+                      <li href="#">http://www.website.com</li>
+                      <li href="#">http://www.website.com</li>
+                      <li href="#">http://www.website.com</li>
+                    </ul>
+                    
+                    </li>
+                </ul>
+              </div><!--//content-->
+            </div><!--//section-inner-->
+          </aside><!--//aside-->
         </div>
-        
-      </div><!--//primary-->
-      <div class="secondary col-md-4 col-sm-10 col-xs-10">
-        <aside class="info aside section">
-          <div class="section-inner">
-            <h2 class="heading sr-only">Basic Information</h2>
-            <div class="content">
-              <ul class="list-unstyled">
-                <li><i class="fa fa-map-marker"></i><span class="sr-only"><b>Creacion:  </b></span>{{project.creacion_date}}</li>
-                <li><i class="fa fa-link"></i><span class="sr-only">Desarrolladores:  </span>
-                  <ul>
-                    <li href="#">http://www.website.com</li>
-                    <li href="#">http://www.website.com</li>
-                    <li href="#">http://www.website.com</li>
-                  </ul>
-                  
-                  </li>
-              </ul>
-            </div><!--//content-->
-          </div><!--//section-inner-->
-        </aside><!--//aside-->
       </div>
     </div>
-  </div>
-  <!-- ******FOOTER****** 
-  <footer class="footer">
-    <div class="container text-center">
-      <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com"
-          target="_blank">3rd Wave Media</a> for developers</small>
-    </div>
-  </footer>
--->
-  <!-- Javascript -->
-  <script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
-  <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script>
-  <!-- github activity plugin -->
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
-  <script type="text/javascript"
-    src="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js"></script>
-  <!-- custom js -->
-  <script type="text/javascript" src="assets/js/main.js"></script>
-
-
-</mat-card>
-</mat-dialog-content>
-<mat-dialog-actions class="align-self-end">
-  <button mat-button mat-dialog-close>Editar</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cerrar</button>
-</mat-dialog-actions>
+    <!-- ******FOOTER****** 
+    <footer class="footer">
+      <div class="container text-center">
+        <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com"
+            target="_blank">3rd Wave Media</a> for developers</small>
+      </div>
+    </footer>
+  -->
+    <!-- Javascript -->
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script>
+    <!-- github activity plugin -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript"
+      src="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="assets/js/main.js"></script>
+  
+  
+  </mat-card>
+  </mat-dialog-content>
+  <mat-dialog-actions class="align-self-end">
+    <button mat-button mat-dialog-close>Editar</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Cerrar</button>
+  </mat-dialog-actions>
+  

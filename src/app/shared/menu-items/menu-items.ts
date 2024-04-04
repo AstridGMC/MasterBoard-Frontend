@@ -15,9 +15,8 @@ const MENUITEMS = [
   { state: 'projectList', type: 'link', name: 'Mis Proyectos', icon: 'table_chart' },
   { state: 'Proximos', type: 'link', name: 'Proximos', icon: 'access_alarms' },
   { state: 'nuevoProyecto', type: 'link', name: 'Nuevo Proyecto', icon: 'control_point' },
-  { state: 'developers', type: 'link', name: 'Developers', icon: 'supervisor_account' },
-  { state: 'createDeveloper', type: 'link', name: 'Nuevo Desarrollador', icon: 'supervisor_account' },
-
+  { state: 'users', type: 'link', name: 'Usuarios', icon: 'supervisor_account' },
+ 
   { state: 'button', type: 'link', name: 'Buttons', icon: 'crop_7_5' },
   { state: 'grid', type: 'link', name: 'Grid List', icon: 'view_comfy' },
   { state: 'lists', type: 'link', name: 'Lists', icon: 'view_list' },

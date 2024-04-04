@@ -48,8 +48,9 @@ export class CurrentUserService {
       .pipe(debounceTime(500), distinctUntilChanged())
       .subscribe({
         next: () => {
-          this.clearToken();
+
           this.router.navigate(['/authentication/login']);
+          this.clearToken();
         },
       });
   }

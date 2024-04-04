@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { CaseType } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment + 'caseType';
+const baseUrl = environment.gestorBackendUrl + 'caseType';
 
 @Injectable({
   providedIn: 'root',
