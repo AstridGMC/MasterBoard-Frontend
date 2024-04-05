@@ -70,10 +70,10 @@ export class CaseType{
   id!: number;
   name!:string;
   description!: string;
-  project_id: number=0;
+  project_id!: number;
   created_at!: string;
   updated_at!: string;
-  label_color!: string;
+  labelColor!: string;
 }
 
 //case_type_flow

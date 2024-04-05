@@ -56,30 +56,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       'actions',
     ];
    
-    datos: any[] = [{
-      id:0,
-      firstName: "Astrid",
-      lastName:"Mc",
-      email:"astrid@gmail.com",
-      address: "direccion av. z.5",
-      phone: "34343456",
-      imgUrl: "string",
-      role: "administrator",
-      authorities: [
-        "administrator"
-      ]},
-      {
-        id:0,
-        firstName: "Juan",
-        lastName:"Juarez",
-        email:"juan@gmail.com",
-        address: "direccion av. z.5",
-        phone: "5454343",
-        imgUrl: "string",
-        role: "administrator",
-        authorities: [
-          "administrator"
-        ]},];
+    datos: any[] = [];
     @ViewChild('paginator') paginator!: MatPaginator;
   
     dataSource = new MatTableDataSource<UserInfo>(this.datos);
@@ -111,8 +88,9 @@ export class UserComponent implements OnInit, AfterViewInit {
     getAll() {
       this.userService.listAllHttp({}).subscribe({
         next: (value) => {
-          this.datos = value.body.result;
-          this.dataSource = new MatTableDataSource<UserInfo>(this.datos);
+          this.datos = value.body.data;
+          this.dataSource = new MatTableDataSource<any>(this.datos);
+          
           this.dataSource.paginator = this.paginator;
         },
         error: () => {

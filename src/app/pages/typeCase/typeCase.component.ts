@@ -53,22 +53,7 @@ export class TypeCaseComponent implements OnInit, AfterViewInit {
       'created_at',
       'actions',
     ];
-    datos: CaseType[] = [{
-      id:1,
-      created_at:'20/02/2024',
-      description:'dddddd',
-      label_color:'dd',
-      name:'one',
-      project_id:0,
-      updated_at:'20/03/2024'},
-    { 
-      id:2,
-      created_at:'21/02/2024',
-      description:'d223ww',
-      label_color:'red',
-      name:'one2',
-      project_id:1,
-      updated_at:'20/03/2024'},];
+    datos: CaseType[] = [];
     @ViewChild('paginator') paginator!: MatPaginator;
   
     dataSource = new MatTableDataSource<CaseType>(this.datos);
@@ -101,7 +86,8 @@ export class TypeCaseComponent implements OnInit, AfterViewInit {
     getAll() {
       this.typeCaseService.listAllHttp({}).subscribe({
         next: (value) => {
-          this.datos = value.body.result;
+          console.log
+          this.datos = value.body.data;
           this.dataSource = new MatTableDataSource<CaseType>(this.datos);
           this.dataSource.paginator = this.paginator;
         },

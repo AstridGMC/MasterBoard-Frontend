@@ -60,7 +60,7 @@ export class CurrentUserService {
     let authToken = localStorage.getItem('auth_token') + '';
     try {
       let dataToken: any = jwtDecode(authToken);
-      return dataToken.rol;
+      return dataToken.role;
     } catch (error) {
       return undefined;
     }

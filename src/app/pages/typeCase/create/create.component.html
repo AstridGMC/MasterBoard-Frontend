@@ -35,9 +35,10 @@
                             <label for="descripcionlbl" class="formbold-form-label"
                                         style="padding-left: 4%;">Color de etiqueta:</label>
                             <hr>
-                                    <input matInput  [(colorPicker)]="color" [style.background]="color" #colorInput="ngModel"
-                                        name="color" required [(ngModel)]="caseType.label_color"
-                                        style="margin-top: 0rem; height: 4.8rem;" />
+                                    <input matInput id="colorPicker" #colorPicker [(colorPicker)]="color" [style.background]="color" #colorInput="ngModel"
+                                        name="color" required [(ngModel)]="caseType.labelColor"
+                                        style="margin-top: 0rem; height: 4.8rem;"  />
+                                       
                         </div>
                         </div>
                     </div>
@@ -49,7 +50,10 @@
         </div>
     </mat-card-content>
 </mat-card>
-
+<mat-form-field hidden>
+    <mat-label>Action</mat-label>
+    <input matInput value="Dance" #action>
+  </mat-form-field>
 
 <!-- ============================================================== -->
 <!-- row -->
@@ -59,37 +63,19 @@
     <div class="col-12">
         <mat-card>
             <mat-card-content>
-                <mat-card-title>Error State <span
+                <mat-card-title>Etapas <span
                         class="bg-success text-white rounded font-12 p-l-5 p-r-5">New</span></mat-card-title>
                
                 <mat-horizontal-stepper>
-                    <h1>paso 1</h1>
+                 
                 </mat-horizontal-stepper>
                 <mat-horizontal-stepper linear #steppererror>
                     <h1>paso 2</h1>
                     <mat-step [stepControl]="errorfirstFormGroup" errorMessage="Name is required.">
-                        <form [formGroup]="errorfirstFormGroup">
-                            <ng-template matStepLabel>Fill out your name</ng-template>
-                            <mat-form-field>
-                                <input matInput placeholder="Last name, First name" formControlName="errorfirstCtrl"
-                                    required>
-                            </mat-form-field>
-                            <div>
-                                <button mat-raised-button color="accent" matStepperNext>Next</button>
-                            </div>
-                        </form>
+                       
                     </mat-step>
                     <mat-step [stepControl]="errorsecondFormGroup" errorMessage="Address is required.">
-                        <form [formGroup]="errorsecondFormGroup">
-                            <ng-template matStepLabel>Fill out your address</ng-template>
-                            <mat-form-field>
-                                <input matInput placeholder="Address" formControlName="errorsecondCtrl" required>
-                            </mat-form-field>
-                            <div class="button-row">
-                                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-                                <button mat-raised-button color="accent" matStepperNext>Next</button>
-                            </div>
-                        </form>
+                        
                     </mat-step>
                     <mat-step>
                         <ng-template matStepLabel>Done</ng-template>

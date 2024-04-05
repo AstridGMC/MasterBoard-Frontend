@@ -10,8 +10,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {StepTypeCaseComponent} from '../../../material-component/stepTypeCase/stepTypeCase.component'
-
-
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'create-type-case',
@@ -28,7 +28,7 @@ export class CreateTypeCaseComponent implements OnInit,OnChanges {
     private _formBuilder: FormBuilder,
     private toasterService: ToasterService,
     private typeCaseService: TypeCaseService,
-     
+    private _snackBar: MatSnackBar
   ) {}
 
 
@@ -121,8 +121,10 @@ export class CreateTypeCaseComponent implements OnInit,OnChanges {
   }
 
   save() {
+    this.caseType.labelColor=this.color;
     this.form.form.markAllAsTouched();
    //let puestoNuevo= new Puesto();
+   console.log(this.caseType)
     this.typeCaseService.save(this.caseType).subscribe({
       next: () => {
         if(!this.caseType){
@@ -130,16 +132,25 @@ export class CreateTypeCaseComponent implements OnInit,OnChanges {
             message: 'Tipo de caso creado con exito',
             type: ToasterEnum.SUCCESS,
           });
+          this._snackBar.open('Message archived', 'Undo', {
+            duration: 100
+          });
+          
+          ;
         }else{
+
           this.toasterService.show({
             message: 'Cambios realizados con exito',
             type: ToasterEnum.SUCCESS,
+            
           });
+          this._snackBar.open("guardado");
         }
         this.finish();
       },error:()=> {
         console.log("error")
         this.toasterService.showGenericErrorToast();
+
       },
     });
   }

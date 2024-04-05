@@ -69,16 +69,7 @@ export class CreateProjectComponent implements OnInit, OnChanges {
     {id:1, email: 'Carlos@email.com', nombres:'Carlos', apellidos:'Perez', rol:'projectManager'}, ];
 
   ngOnInit(): void {
-    if (this.projectId) {
-      //llenado de opcion editar
-      this.projectService.get(this.projectId).subscribe({
-        next: (value) => {
-          this.projectId = value.result
-        }, error: () => {
-          this.toasterService.showGenericErrorToast();
-        },
-      })
-    }
+   
 
     //filtrado de datos
     this.filteredOptions = this.myControl.valueChanges.pipe(

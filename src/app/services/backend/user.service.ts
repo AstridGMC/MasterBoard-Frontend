@@ -4,20 +4,24 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.gestorBackendUrl + 'v1/users';
+const baseUrl = environment.gestorBackendUrl + 'api/v1/users';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-
+  headers: any;
 
   listAllHttp(queryParams: any): Observable<HttpResponse<any>> {
     const params = this.getQueryParams(queryParams);
+    
     return this.http.get<HttpResponse<any>>(baseUrl, {
       observe: 'response',
+      headers: this.headers,
+      
     });
+    
   }
 
   
